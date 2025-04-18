@@ -45,6 +45,10 @@ in
     # screenshot
     hyprshot
 
+    # utils
+    brightnessctl
+    playerctl
+
     # others
     gnome-calculator
     gnome-text-editor
