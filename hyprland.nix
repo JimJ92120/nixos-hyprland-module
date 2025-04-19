@@ -44,6 +44,8 @@ in
     nwg-look
     # screenshot
     hyprshot
+    # clipboard
+    wl-clip-persist
 
     # utils
     brightnessctl
@@ -65,6 +67,8 @@ in
   fonts.packages = with pkgs; [                                                                          
     font-awesome
   ];
+  # power-profiles-daemon
+  services.power-profiles-daemon.enable = true;
 
   home-manager = {
     users.${MAIN_USER} = {
@@ -171,7 +175,8 @@ in
           exec-once = [
             "sh ~/.config/waybar/waybar.sh"
             "hyprpaper"
-            "clipman"
+            "wl-clip-persist"
+            "power-profiles-daemon"
           ];
 
           # monitors
