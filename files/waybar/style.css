@@ -93,7 +93,9 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #power-profiles-daemon,
-#mpd {
+#mpd,
+#custom-gpu,
+#custom-temperature_gpu {
   padding: 0 10px;
   color: #ffffff;
 }
@@ -169,9 +171,14 @@ label:focus {
   background-color: #000000;
 }
 
-#cpu {
+#cpu,
+#temperature {
   background-color: #2ecc71;
   color: #000000;
+}
+
+#temperature.critical {
+  background-color: #eb4d4b;
 }
 
 #memory {
@@ -182,8 +189,9 @@ label:focus {
   background-color: #964b00;
 }
 
-#backlight {
-  background-color: #90b1b1;
+#custom-gpu,
+#custom-temperature_gpu {
+  background-color: #f0932b;
 }
 
 #network {
@@ -225,14 +233,6 @@ label:focus {
 
 #custom-media.custom-vlc {
   background-color: #ffa000;
-}
-
-#temperature {
-  background-color: #f0932b;
-}
-
-#temperature.critical {
-  background-color: #eb4d4b;
 }
 
 #tray {

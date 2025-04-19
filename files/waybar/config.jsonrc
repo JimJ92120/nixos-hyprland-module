@@ -9,18 +9,18 @@
     "hyprland/scratchpad",
     "custom/media"
   ],
-  "modules-center": [
-    "hyprland/window"
-  ],
+  "modules-center": ["hyprland/window"],
   "modules-right": [
     "mpd",
     //"idle_inhibitor",
     "pulseaudio",
     "network",
-    // "power-profiles-daemon",
-    "cpu",
+    "power-profiles-daemon",
     "memory",
     "temperature",
+    "cpu",
+    "custom/temperature_gpu",
+    "custom/gpu",
     // "backlight",
     // "keyboard-state",
     // "hyprland/language",
@@ -79,21 +79,32 @@
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": "{:%Y-%m-%d}"
   },
+  "memory": {
+    "format": "{}% "
+  },
+  // cpu
   "cpu": {
     "format": "{usage}% ",
     "tooltip": false
   },
-  "memory": {
-    "format": "{}% "
-  },
   "temperature": {
+    "thermal-zone": 5,
     "critical-threshold": 80,
-    "format": "{temperatureC}°C {icon}",
-    "format-icons": [
-      "",
-      "",
-      ""
-    ]
+    "format": "{temperatureC}°C",
+    "format-icons": ["", "", ""],
+  },
+  // gpu
+  "custom/gpu": {
+    "format": "{}%",
+    "interval": 5,
+    "return-type": "",
+    "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader | sed 's/%//'"
+  },
+  "custom/temperature_gpu": {
+    "format": "{}°C",
+    "interval": 5,
+    "return-type": "",
+    "exec": "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader"
   },
   "battery": {
     "states": {
@@ -106,13 +117,7 @@
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    "format-icons": ["", "", "", "", ""]
   },
   "battery#bat2": {
     "bat": "BAT2"
@@ -150,11 +155,7 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ]
+      "default": ["", "", ""]
     },
     "on-click": "pavucontrol"
   },
@@ -175,10 +176,10 @@
     "menu": "on-click",
     "menu-file": "$HOME/.config/waybar/modules/power_menu.xml",
     "menu-actions": {
-      "shutdown": "shutdown",
+      "shutdown": "shutdown -h now",
       "reboot": "reboot",
-      "suspend": "systemctl suspend",
-      "hibernate": "systemctl hibernate"
+      "suspend": "systemctl suspend"
+      // "hibernate": "systemctl hibernate"
     }
   }
 }
