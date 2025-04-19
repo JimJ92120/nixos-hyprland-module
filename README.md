@@ -38,6 +38,27 @@ Includes:
 
 Edit `./files/waybar/config.jsonrc`.
 
+Note:  
+`custom/gpu` and `custom/temperature_gpu` are set for an Nvidia GPU.
+Please edit the following according to the device hardware and needs:
+
+```json
+"custom/gpu": {
+  "format": "{}%",
+  "interval": 5,
+  "return-type": "",
+  "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader | sed 's/%//'"
+},
+"custom/temperature_gpu": {
+  "format": "{}°C",
+  "interval": 5,
+  "return-type": "",
+  "exec": "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader"
+},
+```
+
+![screenshot-waybar](./screenshot-waybar.png)
+
 ### screenshot
 
 [`hyprshot`](https://github.com/Gustash/Hyprshot) is used to do screenshots (see `key binding` section below).
