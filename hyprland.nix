@@ -50,6 +50,7 @@ in
     # utils
     brightnessctl
     playerctl
+    networkmanagerapplet
 
     # others
     gnome-calculator
@@ -177,6 +178,7 @@ in
             "hyprpaper"
             "wl-clip-persist"
             "power-profiles-daemon"
+            "nm-applet --no-agent"
           ];
 
           # monitors
