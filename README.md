@@ -18,6 +18,8 @@ Includes:
 
 ![screenshot](./screenshot.png)
 
+`home-manager` is used here to copy over some configuration files.
+
 ---
 
 ---
@@ -26,7 +28,8 @@ Includes:
 
 1. clone the repository
 2. move the files into `/etc/nixos` directory
-3. `import` module in `/etc/nixos/configuration.nix`
+3. edit variables in `hyprland.nix` according to your setup (e.g `NIXOS_VERSION`, `MAIN_USER`) - https://github.com/JimJ92120/nixos-hyprland-module/blob/main/hyprland.nix#L3-L11
+4. `import` module in `/etc/nixos/configuration.nix`
 
 `wayland.windowManager.hyprland.settings.monitor` is not set, commented lines shows configurations for a 3 displays layout (left - center - right).
 
