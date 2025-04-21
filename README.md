@@ -38,7 +38,22 @@ Includes:
 
 Edit `./files/waybar/config.jsonrc`.
 
-Note:  
+#### cpu
+
+Edit `temperature` module accordingly with `thermal-zone` or `hwmon-path` accordingly.
+
+```sh
+# check `thermal-zone`
+# see https://github.com/Alexays/Waybar/blob/master/resources/config.jsonc#L126
+for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+
+# check `hwmon-path`
+# see https://github.com/Alexays/Waybar/blob/master/resources/config.jsonc#L127
+for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+```
+
+#### gpu
+
 `custom/gpu` and `custom/temperature_gpu` are set for an Nvidia GPU.
 Please edit the following according to the device hardware and needs:
 
