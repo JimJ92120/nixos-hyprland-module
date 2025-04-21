@@ -51,6 +51,7 @@ in
     brightnessctl
     playerctl
     networkmanagerapplet
+    pavucontrol
 
     # others
     gnome-calculator
