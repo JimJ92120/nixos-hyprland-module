@@ -11,6 +11,10 @@ let
   KITTY_CONFIG = ./files/kitty/kitty.conf;
 in
 {
+  imports = [
+    (import "${HOME_MANAGER_PACKAGE}/nixos")
+  ];
+
   services.xserver = {
     enable = true;
 
